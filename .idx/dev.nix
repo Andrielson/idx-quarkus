@@ -6,6 +6,7 @@
   # Use https://search.nixos.org/packages to find packages
   packages = [ 
         pkgs.graalvm-ce
+        pkgs.htop
         pkgs.maven
     ];
   idx = {
@@ -20,7 +21,7 @@
         install = "./mvnw dependency:resolve";
       };
       # Runs when a workspace is (re)started
-      onStart = { run-server = "./devserver.sh"; };
+      onStart = { run-server = "./mvnw compile quarkus:dev"; };
     };
   };
 }
